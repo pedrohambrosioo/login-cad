@@ -5,7 +5,8 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from setup import settings
 from django.core.mail import send_mail
-
+from django.contrib.auth.decorators import login_required
+#from database import TabelaTeste
 
 def home(request):
     return render(request, 'authentication/index.html')
@@ -22,7 +23,7 @@ def signup(request):
         pass2 = request.POST['pass2']
 
         if User.objects.filter(username=username):
-            messages.error(request, 'Username already exist! please try some other username !')
+            messages.error(request, 'Este UserName já existe, tente outro !')
             return redirect('signup')
 
         #if User.objects.filter(email=email):
@@ -30,21 +31,22 @@ def signup(request):
             #return redirect('signup')
 
         if len(username)>10:
-             messages.error(request, 'Username must be under 10 characters !')
+             messages.error(request, 'Seu UserName tem mais que 10 caracteres !')
+             return redirect('signup') 
             
         if pass1 != pass2:
-            messages.error(request, 'Password didnt match !')
+            messages.error(request, 'As senhas não são as mesmas !')
             return redirect('signup')
 
         if not username.isalnum():
-            messages.error(request, 'Username must be Alpha-numeric !')
+            messages.error(request, 'Username só pode ter letras !')
             return redirect('signup')
 
         myuser = User.objects.create_user(username, email, pass1)
         myuser.firt_name = fname
         myuser.last_name = lname
         myuser.save()
-        messages.success(request, 'your account has been sucessfully created. ')
+        messages.success(request, 'Sua conta foi criada com sucesso !')
 
 
         #email
@@ -59,6 +61,8 @@ def signup(request):
     return render(request, 'authentication/signup.html')
 
 def signin(request):
+    if request.user.is_authenticated:
+        return redirect('signout')
 
     if request.method == 'POST':
         username = request.POST['username']
@@ -69,7 +73,7 @@ def signin(request):
         if user is not None:
             login(request, user)
             fname = user.first_name
-            return render(request, 'authentication/index.html', {'fname': fname})
+            return redirect('inicio')
         else:
             messages.error(request, 'Bad credentials')
             return redirect('signin')
@@ -78,5 +82,9 @@ def signin(request):
 
 def signout(request):
     logout(request)
-    messages.success(request, "Logged out Sucessfully")
+    messages.success(request, "Logged out Sucessfully") 
     return redirect('home')
+
+@login_required
+def inicio(request):
+    return render(request, 'authentication/home.html')
