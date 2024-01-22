@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloco</title>
+</head>
+<body>
+    <p>Preencha aqui os dados dos equipamentos</p> 
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message:</strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+    </div>
+    {% endfor %}
+    <form method="post" action="{% url 'bloco' %}">
+        {% csrf_token %}
+        Bloco
+        <p><label for="pass1">Data</label>
+            <input type="text" class="form-control" id="data" name="data" Required></p>
+        </div>
+        <p><label for="pass1">Código</label>
+            <input type="text" class="form-control" id="código" name="código" Required></p>
+        </div>
+        <p><label for="pass1">Lote</label>
+            <input type="text" class="form-control" id="lote" name="lote" Required></p>
+        </div>
+        <div class="form-group">
+            <p></p><label for="pass2">Número</label>
+            <input type="text" class="form-control" id="número" name="número"  Required></p>
+       
+        <p><label for="pass1">Colo(Calibre)</label>
+            <input type="text" class="form-control" id="colo" name="colo" Required></p>
+            
+        <p><label for="pass1">Rodapé(Calibre)</label>
+            <input type="text" class="form-control" id="rodape" name="rodape" Required></p>
+        
+        <p><label for="pass1">Flexa</label>
+            <input type="text" class="form-control" id="flexa" name="flexa" Required></p>
+        
+        <p><label for="pass1">Furo de Escape</label>
+            <input type="text" class="form-control" id="furo_de_escape" name="furo_de_escape" Required></p>
+        
+        <p><label for="pass1">Encaixe FFO</label>
+            <input type="text" class="form-control" id="encaixe_ffo" name="encaixe_ffo" Required></p>
+        
+        <p><label for="pass1">Externo(Calibre Ferrad.)</label>
+            <input type="text" class="form-control" id="externo" name="externo" Required></p>
+        
+        <p><label for="pass1">Situacao Final(Visual)</label>
+            <input type="text" class="form-control" id="situacao_final" name="situacao_final" Required></p>       
+        </div>   
+        <p><label for="pass1">Colaborador</label>
+            <input type="text" class="form-control" id="colaborador" name="colaborador" Required></p>
+        </div>       
+        <button type="submit">Enviar</button>
+    </form>  
+    <br><a href="{% url 'inicio' %}"><button>Voltar</button></a></br>
+</body>
+</html>

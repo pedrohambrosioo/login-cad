@@ -6,7 +6,8 @@ from django.contrib.auth import authenticate, login, logout
 from setup import settings
 from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
-#from database import TabelaTeste
+from .forms import CoroaTeste, FormaTeste, BlocoTeste
+from .models import Coroa, Forma, Bloco
 
 def home(request):
     return render(request, 'authentication/index.html')
@@ -88,3 +89,68 @@ def signout(request):
 @login_required
 def inicio(request):
     return render(request, 'authentication/home.html')
+
+@login_required
+def coroa(request):
+    if request.method == 'POST':
+        form = CoroaTeste(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Os dados foram adicionados com sucesso")
+            return redirect('coroa')
+    else:
+        form = CoroaTeste()
+    return render(request, 'authentication/coroa.html')
+
+@login_required
+def forma(request):
+    if request.method == 'POST':
+        form = FormaTeste(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Os dados foram adicionados com sucesso")
+            return redirect('forma')
+    else:
+        form = FormaTeste()
+    return render(request, 'authentication/forma.html')
+
+@login_required
+def bloco(request):
+    if request.method == 'POST':
+        form = BlocoTeste(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Os dados foram adicionados com sucesso")
+            return redirect('bloco')
+    else:
+        form = BlocoTeste()
+    return render(request, 'authentication/bloco.html')
+
+@login_required
+def coroa_view(request):
+    codigo_digitado = request.GET.get('codigo', '')
+    lista = []
+
+    if codigo_digitado:
+        lista = Coroa.objects.filter(código = codigo_digitado)
+    
+    return render(request, 'authentication/coroa_results.html', {'coroas': lista})
+
+@login_required
+def forma_view(request):
+    codigo_digitado = request.GET.get('codigo', '')
+    lista = []
+
+    if codigo_digitado:
+        lista = Forma.objects.filter(código = codigo_digitado)
+    return render(request, 'authentication/forma_results.html', {'formas': lista})
+
+@login_required
+def bloco_view(request):
+    codigo_digitado = request.GET.get('codigo', '')
+    lista = []
+
+    if codigo_digitado:
+        lista = Bloco.objects.filter(código = codigo_digitado)
+    return render(request, 'authentication/bloco_results.html', {'blocos': lista})
+

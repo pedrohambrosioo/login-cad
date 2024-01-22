@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>forma</title>
+</head>
+<body>
+    <form method="get" action="">
+        <label for="codigo">Digite o código do equipamento:</label>
+        <input type="text" id="codigo" name="codigo" value="{{ codigo_digitado }}">
+        <input type="submit" value="Buscar">
+    </form>
+    <h1>Lista de Forma</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>DATA</th>
+                <th>Código</th>
+                <th>Lote</th>
+                <th>Número</th>
+                <th>Colo</th>
+                <th>Rodapé</th>
+                <th>Flexa</th>
+                <th>Furo de Escape</th>
+                <th>Encaixe FFO</th>
+                <th>Externo</th>
+                <th>Situação Final</th>
+                <th>Colaborador</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for forma in formas %}
+                <tr>
+                    <td>{{ forma.data }}</td>
+                    <td>{{ forma.código }}</td>
+                    <td>{{ forma.lote }}</td>
+                    <td>{{ forma.número }}</td>
+                    <td>{{ forma.colo }}</td>
+                    <td>{{ forma.rodape }}</td>
+                    <td>{{ forma.flexa }}</td>
+                    <td>{{ forma.furo_de_escape }}</td>
+                    <td>{{ forma.encaixe_ffo }}</td>
+                    <td>{{ forma.externo }}</td>
+                    <td>{{ forma.situacao_final }}</td>
+                    <td>{{ forma.colaborador }}</td>                 
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br><a href="{% url 'inicio' %}"><button>Voltar</button></a></br>
+</body>
+</html>
