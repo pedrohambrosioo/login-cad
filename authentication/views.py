@@ -129,28 +129,42 @@ def bloco(request):
 @login_required
 def coroa_view(request):
     codigo_digitado = request.GET.get('codigo', '')
+    lote = request.GET.get('lote', '')
     lista = []
 
     if codigo_digitado:
-        lista = Coroa.objects.filter(código = codigo_digitado)
+        lista = Coroa.objects.filter(código = codigo_digitado, lote = lote)
     
     return render(request, 'authentication/coroa_results.html', {'coroas': lista})
 
 @login_required
 def forma_view(request):
     codigo_digitado = request.GET.get('codigo', '')
+    lote = request.GET.get('lote', '')
     lista = []
 
     if codigo_digitado:
-        lista = Forma.objects.filter(código = codigo_digitado)
+        lista = Forma.objects.filter(código = codigo_digitado, lote = lote)
     return render(request, 'authentication/forma_results.html', {'formas': lista})
 
 @login_required
 def bloco_view(request):
     codigo_digitado = request.GET.get('codigo', '')
+    lote = request.GET.get('lote', '')
     lista = []
 
     if codigo_digitado:
-        lista = Bloco.objects.filter(código = codigo_digitado)
+        lista = Bloco.objects.filter(código = codigo_digitado, lote = lote)
     return render(request, 'authentication/bloco_results.html', {'blocos': lista})
 
+@login_required
+def colaboradores_view(request):
+    colaborador_digitado = request.GET.get('colaborador', '')
+    coroa = forma = bloco = 0
+
+    if colaborador_digitado:
+        coroa = Coroa.objects.filter(colaborador = colaborador_digitado).count()
+        forma = Forma.objects.filter(colaborador = colaborador_digitado).count()
+        bloco = Bloco.objects.filter(colaborador = colaborador_digitado).count()
+
+    return render(request, 'authentication/colaborador_results.html', {'coroa' : coroa, 'forma':forma, 'bloco':bloco})

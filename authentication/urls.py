@@ -15,5 +15,6 @@ urlpatterns = [
     path('inicio/coroa/results', views.coroa_view, name='coroa_view'),  
     path('inicio/forma/results', views.forma_view, name='forma_view'),  
     path('inicio/bloco/results', views.bloco_view, name='bloco_view'),
+    path('inicio/colaboradores/results', views.colaboradores_view, name='colaboradores_view'),
     path('accounts', include('django.contrib.auth.urls'))
 ]   

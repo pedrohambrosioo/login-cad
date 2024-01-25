@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colaboradores</title>
+</head>
+<body>
+    <form method="get" action="">
+        <label for="codigo">Digite o nome do colaborador:</label>
+        <input type="text" id="colaborador" name="colaborador" value="{{ colaborador_digitado }}">    
+        <input type="submit" value="Buscar">    
+    </form>
+   
+    <h2>Numero de coroas : {{coroa}}</h2>
+    <h2>Numero de formas : {{forma}}</h2>
+    <h2>Numero de bloco : {{bloco}}</h2>
+
+    <br><a href="{% url 'inicio' %}"><button>Voltar</button></a></br>
+</body>
+</html>
+</body>
+</html>
