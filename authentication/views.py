@@ -8,6 +8,7 @@ from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
 from .forms import CoroaTeste, FormaTeste, BlocoTeste
 from .models import Coroa, Forma, Bloco
+from .decorators import only_alessandro
 
 def home(request):
     return render(request, 'authentication/index.html')
@@ -126,7 +127,7 @@ def bloco(request):
         form = BlocoTeste()
     return render(request, 'authentication/bloco.html')
 
-@login_required
+@only_alessandro
 def coroa_view(request):
     codigo_digitado = request.GET.get('codigo', '')
     lote = request.GET.get('lote', '')
@@ -137,7 +138,7 @@ def coroa_view(request):
     
     return render(request, 'authentication/coroa_results.html', {'coroas': lista})
 
-@login_required
+@only_alessandro
 def forma_view(request):
     codigo_digitado = request.GET.get('codigo', '')
     lote = request.GET.get('lote', '')
@@ -145,9 +146,9 @@ def forma_view(request):
 
     if codigo_digitado:
         lista = Forma.objects.filter(código = codigo_digitado, lote = lote)
-    return render(request, 'authentication/forma_results.html', {'formas': lista})
+    return render(request, 'authentication/forma_results.html', {'formas': lista, 'tabela_gerada' : bool(lista)})
 
-@login_required
+@only_alessandro
 def bloco_view(request):
     codigo_digitado = request.GET.get('codigo', '')
     lote = request.GET.get('lote', '')
@@ -157,14 +158,15 @@ def bloco_view(request):
         lista = Bloco.objects.filter(código = codigo_digitado, lote = lote)
     return render(request, 'authentication/bloco_results.html', {'blocos': lista})
 
-@login_required
+@only_alessandro
 def colaboradores_view(request):
     colaborador_digitado = request.GET.get('colaborador', '')
+    data_digitado = request.GET.get('data', '')
     coroa = forma = bloco = 0
 
     if colaborador_digitado:
-        coroa = Coroa.objects.filter(colaborador = colaborador_digitado).count()
-        forma = Forma.objects.filter(colaborador = colaborador_digitado).count()
-        bloco = Bloco.objects.filter(colaborador = colaborador_digitado).count()
+        coroa = Coroa.objects.filter(colaborador = colaborador_digitado, data = data_digitado).count()
+        forma = Forma.objects.filter(colaborador = colaborador_digitado, data = data_digitado).count()
+        bloco = Bloco.objects.filter(colaborador = colaborador_digitado, data = data_digitado).count()
 
     return render(request, 'authentication/colaborador_results.html', {'coroa' : coroa, 'forma':forma, 'bloco':bloco})
