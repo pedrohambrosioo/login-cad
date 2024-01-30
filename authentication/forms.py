@@ -11,11 +11,11 @@ class CoroaTeste(forms.ModelForm):
 class FormaTeste(forms.ModelForm):
     class Meta:
         model = Forma
-        fields = ['código', 'número', 'colo', 'rodape', 'flexa', 'furo_de_escape', 'encaixe_ffo', 'externo', 'situacao_final', 'data', 'lote', 'colaborador'
+        fields = ['código','pescoco', 'ombro', 'calcanhar', 'número', 'colo', 'rodape', 'flexa', 'furo_de_escape', 'encaixe_ffo', 'externo', 'situacao_final', 'data', 'lote', 'colaborador'
 ]
         
 class BlocoTeste(forms.ModelForm):
     class Meta:
         model = Bloco
-        fields = ['código', 'número', 'colo', 'rodape', 'flexa', 'furo_de_escape', 'encaixe_ffo', 'externo', 'situacao_final', 'data', 'lote', 'colaborador'
+        fields = ['código', 'número', 'colo', 'rodape', 'flexa', 'encaixe_angular', 'encaixe_fb', 'externo', 'situacao_final', 'data', 'lote', 'colaborador'
 ]
