@@ -4,68 +4,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static '/styles/styles.css' %}">
+    <link rel="stylesheet" href="{% static '/styles/dados.css' %}">
     <title>Forma</title>
 </head>
 <body>
-    <p>Preencha aqui os dados dos equipamentos</p> 
+    <h2>Preencha aqui os dados dos equipamentos</h2>
+    <h3>Forma</h3>
     {% for message in messages %}
     <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
         <strong>Message:</strong> {{ message }}
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
+    <span aria-hidden="true">&times;</span></button>
     </div>
     {% endfor %}
     <form method="post" action="{% url 'forma' %}">
         {% csrf_token %}
-        Forma
-        <p><label for="pass1">Data</label>
-            <input type="text" class="form-control" id="data" name="data" placeholder="DD/MM/AAAA" autocomplete="off" Required></p>
-        </div>
-        <p><label for="pass1">Código</label>
-            <input type="text" class="form-control" id="código" name="código"  autocomplete="off" Required></p>
-        </div>
-        <p><label for="pass1">Lote</label>
-            <input type="text" class="form-control" id="lote" name="lote"  autocomplete="off" Required></p>
-        </div>
         <div class="form-group">
-            <p></p><label for="pass2">Número</label>
-            <input type="text" class="form-control" id="número" name="número"  autocomplete="off"  Required></p>
-       
-        <p><label for="pass1">Colo(Calibre)</label>
-            <input type="text" class="form-control" id="colo" name="colo"  autocomplete="off" Required></p>
+            <p><label for="pass1">Data</label>
+                <input type="text" class="dados_forma" id="data" name="data" placeholder="DD/MM/AAAA" autocomplete="off" Required></p>
+            </div>
+            <p><label for="pass1">Código</label>
+                <input type="text" class="dados_forma" id="código" name="código"  autocomplete="off" Required></p>
+            </div>
+            <p><label for="pass1">Lote</label>
+                <input type="text" class="dados_forma" id="lote" name="lote"  autocomplete="off" Required></p>
+            </div>
+            <div class="form-group">
+                <p></p><label for="pass2">Número</label>
+                <input type="text" class="dados_forma" id="número" name="número"  autocomplete="off"  Required></p>
+        
+            <p><label for="pass1">Colo(Calibre)</label>
+                <input type="text" class="dados_forma" id="colo" name="colo"  autocomplete="off" Required></p>
+                
+            <p><label for="pass1">Pescoco</label>
+                <input type="text" class="dados_forma" id="pescoco" name="pescoco"  autocomplete="off" Required></p>
             
-        <p><label for="pass1">Pescoco</label>
-            <input type="text" class="form-control" id="colo" name="colo"  autocomplete="off" Required></p>
-        
-        <p><label for="pass1">Ombro</label>
-            <input type="text" class="form-control" id="colo" name="colo"  autocomplete="off" Required></p>    
+            <p><label for="pass1">Ombro</label>
+                <input type="text" class="dados_forma" id="ombro" name="ombro"  autocomplete="off" Required></p>    
 
-        <p><label for="pass1">Calcanhar</label>
-            <input type="text" class="form-control" id="colo" name="colo"  autocomplete="off" Required></p>
-            <p><label for="pass1">Rodapé(Calibre)</label>
-            <input type="text" class="form-control" id="rodape" name="rodape"  autocomplete="off" Required></p>
+            <p><label for="pass1">Calcanhar</label>
+                <input type="text" class="dados_forma" id="calcanhar" name="calcanhar"  autocomplete="off" Required></p>
+                <p><label for="pass1">Rodapé(Calibre)</label>
+                <input type="text" class="form-control" id="rodape" name="rodape"  autocomplete="off" Required></p>
+            
+            <p><label for="pass1">Flexa</label>
+                <input type="text" class="dados_forma" id="flexa" name="flexa"  autocomplete="off" Required></p>
+            
+            <p><label for="pass1">Furo de Escape</label>
+                <input type="text" class="dados_forma" id="furo_de_escape" name="furo_de_escape"  autocomplete="off" Required></p>
+            
+            <p><label for="pass1">Encaixe FFO</label>
+                <input type="text" class="dados_forma" id="encaixe_ffo" name="encaixe_ffo"  autocomplete="off" Required></p>
+            
+            <p><label for="pass1">Externo(Calibre Ferrad.)</label>
+                <input type="text" class="dados_forma" id="externo" name="externo"  autocomplete="off" Required></p>
+            
+            <p><label for="pass1">Situacao Final(Visual)</label>
+                <input type="text" class="dados_forma" id="situacao_final" name="situacao_final"  autocomplete="off" Required></p>       
+            </div>    
+            <p><label for="pass1">Colaborador</label>
+                <input type="text" class="dados_forma" id="colaborador" name="colaborador"  autocomplete="off" Required></p>
+                <button type="submit" class="btn">Enviar</button>
+            </div>      
         
-        <p><label for="pass1">Flexa</label>
-            <input type="text" class="form-control" id="flexa" name="flexa"  autocomplete="off" Required></p>
-        
-        <p><label for="pass1">Furo de Escape</label>
-            <input type="text" class="form-control" id="furo_de_escape" name="furo_de_escape"  autocomplete="off" Required></p>
-        
-        <p><label for="pass1">Encaixe FFO</label>
-            <input type="text" class="form-control" id="encaixe_ffo" name="encaixe_ffo"  autocomplete="off" Required></p>
-        
-        <p><label for="pass1">Externo(Calibre Ferrad.)</label>
-            <input type="text" class="form-control" id="externo" name="externo"  autocomplete="off" Required></p>
-        
-        <p><label for="pass1">Situacao Final(Visual)</label>
-            <input type="text" class="form-control" id="situacao_final" name="situacao_final"  autocomplete="off" Required></p>       
-        </div>    
-        <p><label for="pass1">Colaborador</label>
-            <input type="text" class="form-control" id="colaborador" name="colaborador"  autocomplete="off" Required></p>
-        </div>      
-        <button type="submit">Enviar</button>
     </form>  
     <br><a href="{% url 'inicio' %}"><button>Voltar</button></a></br>
 </body>

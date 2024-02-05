@@ -7,30 +7,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static '/styles/styles.css' %}">
     <title>Home Page</title>
-</head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap" rel="stylesheet">
+</head> 
 <body>
+    <div class="divCentralizada">
+        <div class="content">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                <strong>Message:</strong> {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            {% endfor %}
 
-    {% for message in messages %}
-    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-        <strong>Message:</strong> {{ message }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
+            <h1>Manutenção de Moldes!</h1>
+
+
+            {% if user.is_authenticated %}
+            <h3>Olá {{fname}}!</h3>
+            <h4>Você ainda está logado. Clique aqui para sair.</h4>
+            <button type="submit" class="btn"><a href="/signout">Sair</a></button>
+            {% else %}
+            <button type="submit" class="btn"><a href="/signup">Cadastra-se</a></button>
+            <br/>
+            <br/>
+            <button type="submit" class="btn"><a href="/signin">Logar</a></button>
+            {% endif %}
+        </div>
     </div>
-    {% endfor %}
-
-    <h3>Bem-vindo à Vidroporto!</h3>
-
-
-    {% if user.is_authenticated %}
-    <h3>Olá {{fname}}!</h3>
-    <h4>Você ainda está logado. Clique aqui para sair.</h4>
-    <button type="submit"><a href="/signout">SignOut</a></button>
-    {% else %}
-    <button type="submit"><a href="/signup">SignUp</a></button>
-    <br/>
-    <br/>
-    <button type="submit"><a href="/signin">SignIn</a></button>
-    {% endif %}
 </body>
 </html>

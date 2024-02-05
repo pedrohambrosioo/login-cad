@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static '/styles/styles.css' %}">
+    <link rel="stylesheet" href="{% static '/styles/dados.css' %}">
     <title>Bloco</title>
 </head>
 <body>
-    <p>Preencha aqui os dados dos equipamentos</p> 
+    <h2>Preencha aqui os dados dos equipamentos</h2> 
     {% for message in messages %}
     <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
         <strong>Message:</strong> {{ message }}
@@ -19,7 +19,7 @@
     {% endfor %}
     <form method="post" action="{% url 'bloco' %}">
         {% csrf_token %}
-        Bloco
+        <h3>Bloco</h3>
         <p><label for="pass1">Data</label>
             <input type="text" class="form-control" id="data" name="data" placeholder="DD/MM/AAAA"  autocomplete="off" Required></p>
         </div>
@@ -43,10 +43,10 @@
             <input type="text" class="form-control" id="flexa" name="flexa"  autocomplete="off" Required></p>
         
         <p><label for="pass1">Encaixe Angular(coroa)</label>
-            <input type="text" class="form-control" id="furo_de_escape" name="furo_de_escape"  autocomplete="off" Required></p>
+            <input type="text" class="form-control" id="encaixe_angular" name="encaixe_angular"  autocomplete="off" Required></p>
         
         <p><label for="pass1">Encaixe FB</label>
-            <input type="text" class="form-control" id="encaixe_ffo" name="encaixe_ffo"  autocomplete="off" Required></p>
+            <input type="text" class="form-control" id="encaixe_fb" name="encaixe_fb"  autocomplete="off" Required></p>
         
         <p><label for="pass1">Externo</label>
             <input type="text" class="form-control" id="externo" name="externo"  autocomplete="off" Required></p>
