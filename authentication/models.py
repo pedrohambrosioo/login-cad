@@ -13,6 +13,7 @@ class Coroa(models.Model):
     externo = models.CharField(max_length=255)
     situacao_final = models.CharField(max_length=255)
     colaborador = models.CharField(max_length=255)
+    
  
 class Forma(models.Model):
     data = models.CharField(max_length=255)
@@ -30,6 +31,7 @@ class Forma(models.Model):
     externo = models.CharField(max_length=255)
     situacao_final = models.CharField(max_length=255)
     colaborador = models.CharField(max_length=255)
+    
 
 class Bloco(models.Model):
     data = models.CharField(max_length=255)
@@ -44,4 +46,5 @@ class Bloco(models.Model):
     externo = models.CharField(max_length=255)
     situacao_final = models.CharField(max_length=255)
     colaborador = models.CharField(max_length=255)
+    
     

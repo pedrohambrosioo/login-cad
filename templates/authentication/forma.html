@@ -21,10 +21,74 @@
         {% csrf_token %}
         <div class="form-group">
             <p><label for="pass1">Data</label>
-                <input type="text" class="dados_forma" id="data" name="data" placeholder="DD/MM/AAAA" autocomplete="off" Required></p>
+                <input type="date" class="dados_forma" id="data" name="data" placeholder="DD/MM/AAAA" autocomplete="off" Required></p>
             </div>
             <p><label for="pass1">Código</label>
-                <input type="text" class="dados_forma" id="código" name="código"  autocomplete="off" Required></p>
+                <select type="text" class="form-control" id="código" name="código"  autocomplete="off" Required></p>
+                        <option value="039">039</option>
+                        <option value="146">146</option>
+                        <option value="061">061</option>
+                        <option value="119">119</option>
+                        <option value="074">074</option>
+                        <option value="171">171</option>
+                        <option value="459">459</option>
+                        <option value="126">126</option>
+                        <option value="098">098</option>
+                        <option value="019">019</option>
+                        <option value="048">048</option>
+                        <option value="266">266</option>
+                        <option value="097">097</option>
+                        <option value="155">155</option>
+                        <option value="071">071</option>
+                        <option value="043">043</option>
+                        <option value="106">106</option>
+                        <option value="029">029</option>
+                        <option value="399">399</option>
+                        <option value="103">103</option>
+                        <option value="139">139</option>
+                        <option value="133">133</option>
+                        <option value="158">158</option>
+                        <option value="046">046</option>
+                        <option value="120">120</option>
+                        <option value="150">150</option>
+                        <option value="022">022</option>
+                        <option value="027">027</option>
+                        <option value="014">014</option>
+                        <option value="398">398</option>
+                        <option value="122">122</option>
+                        <option value="066">066</option>
+                        <option value="095">095</option>
+                        <option value="165">165</option>
+                        <option value="136">136</option>
+                        <option value="040">040</option>
+                        <option value="039">039</option>
+                        <option value="065">065</option>
+                        <option value="121">121</option>
+                        <option value="082">082</option>
+                        <option value="156">156</option>
+                        <option value="013">013</option>
+                        <option value="135">135</option>
+                        <option value="038">038</option>
+                        <option value="035">035</option>
+                        <option value="378">378</option>
+                        <option value="103">103</option>
+                        <option value="024">024</option>
+                        <option value="144">144</option>
+                        <option value="164">164</option>
+                        <option value="174">174</option>
+                        <option value="025">025</option>
+                        <option value="102">102</option>
+                        <option value="166">166</option>
+                        <option value="100">100</option>
+                        <option value="131">131</option>
+                        <option value="070">070</option>
+                        <option value="042">042</option>
+                        <option value="114">114</option>
+                        <option value="258">258</option>
+                        <option value="112">112</option>
+                        <option value="147">147</option>
+                        <option value="067">067</option>
+                </select>
             </div>
             <p><label for="pass1">Lote</label>
                 <input type="text" class="dados_forma" id="lote" name="lote"  autocomplete="off" Required></p>
@@ -65,7 +129,7 @@
             <p><label for="pass1">Colaborador</label>
                 <input type="text" class="dados_forma" id="colaborador" name="colaborador"  autocomplete="off" Required></p>
                 <button type="submit" class="btn">Enviar</button>
-            </div>      
+            </div>         
         
     </form>  
     <br><a href="{% url 'inicio' %}"><button>Voltar</button></a></br>
